@@ -1,0 +1,2 @@
+ru/dkkovalev/serics/shared/BuildConfig.java
+ ru.dkkovalev.serics.shared.BuildConfig
