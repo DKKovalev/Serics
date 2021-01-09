@@ -2,8 +2,6 @@ package ru.dkkovalev.serics.shared.data.repos.auth
 
 import ru.dkkovalev.serics.shared.data.api.TmdbApi
 import ru.dkkovalev.serics.shared.data.entity.request.SessionRequestDto
-import ru.dkkovalev.serics.shared.data.entity.response.RequestTokenDto
-import ru.dkkovalev.serics.shared.data.entity.response.SessionResponseDto
 import ru.dkkovalev.serics.shared.data.utils.SettingsHolder
 
 class AuthRepoImpl(
@@ -11,14 +9,16 @@ class AuthRepoImpl(
     private val settingsHolder: SettingsHolder
 ) : AuthRepo {
 
-    override suspend fun getRequestToken(): RequestTokenDto = api.getToken()
-        .also { settingsHolder.saveRequestToken(it.requestToken) }
+    override suspend fun getRequestToken(): String = settingsHolder.getRequestToken()
+        ?: api.getToken().requestToken
+            .also(settingsHolder::saveRequestToken)
 
-    override suspend fun getSessionId(): SessionResponseDto {
+    override suspend fun getSessionId(): String {
         val requestToken = settingsHolder.getRequestToken()
             ?: throw IllegalStateException("Request token cannot be null")
 
-        return api.requestNewSession(SessionRequestDto(requestToken))
-            .also { settingsHolder.saveSessionId(it.sessionId) }
+        return settingsHolder.getSessionId()
+            ?: api.requestNewSession(SessionRequestDto(requestToken)).sessionId
+                .also(settingsHolder::saveSessionId)
     }
 }

@@ -4,25 +4,22 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import ru.dkkovalev.serics.shared.SericsSDK
+import org.kodein.di.DI
+import org.kodein.di.DIAware
+import org.kodein.di.android.di
+import org.kodein.di.instance
+import ru.dkkovalev.serics.shared.domain.auth.RequestTokenUseCase
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DIAware {
 
-    private lateinit var sericsSDK: SericsSDK
+    override val di: DI by di()
+
+    private val useCase: RequestTokenUseCase by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        sericsSDK = SericsSDK.create(
-            this,
-            "ru_RU",
-            true
-        )
-
-        GlobalScope.launch {
-            println(sericsSDK.getMoviesUseCase().getMovies("chicken run", 1))
-        }
-
+        GlobalScope.launch { useCase.getToken() }
     }
 }

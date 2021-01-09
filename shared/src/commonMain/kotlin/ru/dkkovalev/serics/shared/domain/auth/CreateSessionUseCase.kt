@@ -1,5 +1,7 @@
 package ru.dkkovalev.serics.shared.domain.auth
 
-interface CreateSessionUseCase {
+import ru.dkkovalev.serics.shared.domain.UseCase
+
+interface CreateSessionUseCase : UseCase {
     fun createSession()
 }

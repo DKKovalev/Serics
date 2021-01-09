@@ -12,4 +12,8 @@ class SettingsHolderImpl(private val settings: Settings) : SettingsHolder {
     override fun saveRequestToken(token: String) = settings.set(KEY_REQUEST_TOKEN, token)
 
     override fun getRequestToken(): String? = settings.getStringOrNull(KEY_REQUEST_TOKEN)
+    override fun saveSessionId(sessionId: String) {
+    }
+
+    override fun getSessionId(): String? = null
 }

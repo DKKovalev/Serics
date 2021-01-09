@@ -1,5 +1,7 @@
 package ru.dkkovalev.serics.shared.domain.auth
 
-interface RequestTokenUseCase {
-    fun getToken()
+import ru.dkkovalev.serics.shared.domain.UseCase
+
+interface RequestTokenUseCase : UseCase {
+    suspend fun getToken(): String
 }

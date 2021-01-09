@@ -7,10 +7,10 @@ dependencies {
     implementation(project(":shared"))
     implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${properties["version.coroutines"]}")
     implementation("com.github.aakira:napier:${properties["version.napier"]}")
-    implementation("com.russhwolf:multiplatform-settings:${properties["version.multiplatformSettings"]}")
+    implementation("org.kodein.di:kodein-di-framework-android-x:${properties["version.kodein"]}")
 }
 
 android {
@@ -26,5 +26,12 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }

@@ -26,6 +26,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="ru.dkkovalev.serics.androidApp.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="com.russhwolf.settings.SettingsInitializer"
+                android:value="androidx.startup" />
+        </provider>
     </application>
 
 </manifest>

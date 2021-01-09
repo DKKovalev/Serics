@@ -6,35 +6,38 @@ plugins {
     id("com.android.library")
 }
 
-repositories {
-    gradlePluginPortal()
-    google()
-    jcenter()
-    mavenCentral()
-}
-
 kotlin {
     android()
     ios {
         binaries {
             framework {
                 baseName = "shared"
+                export("com.russhwolf:multiplatform-settings-no-arg:${properties["version.multiplatformSettings"]}")
+                transitiveExport = true
             }
         }
     }
 
-    sourceSets {
+    @Suppress("UNUSED_VARIABLE") sourceSets {
         val commonMain by getting {
             dependencies {
+                //Coroutines
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${properties["version.coroutines"]}")
+
+                //Networking
                 implementation("io.ktor:ktor-client-core:${properties["version.ktor"]}")
                 implementation("io.ktor:ktor-client-serialization:${properties["version.ktor"]}")
                 implementation("io.ktor:ktor-client-cio:${properties["version.ktor"]}")
                 implementation("io.ktor:ktor-client-logging:${properties["version.ktor"]}")
 
+                //Logging
                 implementation("com.github.aakira:napier:${properties["version.napier"]}")
 
-                implementation("com.russhwolf:multiplatform-settings:${properties["version.multiplatformSettings"]}")
+                //Shared Preferences
+                api("com.russhwolf:multiplatform-settings-no-arg:${properties["version.multiplatformSettings"]}")
+
+                //DI
+                implementation("org.kodein.di:kodein-di:${properties["version.kodein"]}")
             }
         }
         val commonTest by getting {
@@ -71,6 +74,15 @@ android {
     defaultConfig {
         minSdkVersion(24)
         targetSdkVersion(29)
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
 }
 
