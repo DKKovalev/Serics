@@ -4,6 +4,7 @@ import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import ru.dkkovalev.serics.shared.data.entity.request.SessionRequestDto
+import ru.dkkovalev.serics.shared.data.entity.request.ValidateTokenDto
 import ru.dkkovalev.serics.shared.data.entity.response.MovieDto
 import ru.dkkovalev.serics.shared.data.entity.response.RequestTokenDto
 import ru.dkkovalev.serics.shared.data.entity.response.SessionResponseDto
@@ -38,13 +39,25 @@ class TmdbApiImpl(
         }
     }
 
-    override suspend fun requestNewSession(requestBody: SessionRequestDto): SessionResponseDto =
-        httpClient.post {
-            url {
-                takeFrom("$endpoint/authentication/session/new")
-                parameter("api_key", key)
-                contentType(ContentType.Application.Json)
-                body = requestBody
-            }
+    override suspend fun requestNewSession(
+        requestBody: SessionRequestDto
+    ): SessionResponseDto = httpClient.post {
+        url {
+            takeFrom("$endpoint/authentication/session/new")
+            parameter("api_key", key)
+            contentType(ContentType.Application.Json)
+            body = requestBody
         }
+    }
+
+    override suspend fun validateToken(
+        requestBody: ValidateTokenDto
+    ): RequestTokenDto = httpClient.post {
+        url {
+            takeFrom("$endpoint/authentication/token/validate_with_login")
+            parameter("api_key", key)
+            contentType(ContentType.Application.Json)
+            body = requestBody
+        }
+    }
 }

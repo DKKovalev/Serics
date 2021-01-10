@@ -6,6 +6,7 @@ import com.github.aakira.napier.Napier
 import com.russhwolf.settings.Settings
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
+import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
@@ -41,6 +42,16 @@ val appModule = DI.Module("AppModule") {
 
             install(JsonFeature) {
                 serializer = KotlinxSerializer(instance())
+            }
+
+            HttpResponseValidator {
+                validateResponse { response ->
+                    when (response.status.value) {
+                        in 300..399 -> throw RedirectResponseException(response)
+                        in 400..499 -> throw ClientRequestException(response)
+                        in 500..599 -> throw ServerResponseException(response)
+                    }
+                }
             }
         }
     }

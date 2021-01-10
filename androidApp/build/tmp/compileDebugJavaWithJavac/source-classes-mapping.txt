@@ -1,2 +1,0 @@
-ru/dkkovalev/serics/androidApp/BuildConfig.java
- ru.dkkovalev.serics.androidApp.BuildConfig
