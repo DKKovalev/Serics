@@ -13,7 +13,7 @@ class SericsApplication : Application(), DIAware {
 
     override val di: DI by DI.lazy {
         import(androidXModule(this@SericsApplication))
-        importAll(appModule, authModule)
+        importAll(appModule, authModule, viewModelModule)
     }
 
     override fun onCreate() {

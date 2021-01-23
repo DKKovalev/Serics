@@ -2,5 +2,9 @@
     {
         "merged": "/Users/kovalev/StudioProjects/Serics/androidApp/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
         "source": "/Users/kovalev/StudioProjects/Serics/androidApp/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/kovalev/StudioProjects/Serics/androidApp/build/intermediates/res/merged/debug/layout_fragment_auth.xml.flat",
+        "source": "/Users/kovalev/StudioProjects/Serics/androidApp/src/main/res/layout/fragment_auth.xml"
     }
 ]

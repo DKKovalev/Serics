@@ -4,7 +4,7 @@
             "outputFile": "/Users/kovalev/StudioProjects/Serics/androidApp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v17/values-v17.xml",
             "map": [
                 {
-                    "source": "/Users/kovalev/.gradle/caches/transforms-2/files-2.1/a9dc6a8738b4e6bfbbce37f0b28b12d0/appcompat-1.2.0/res/values-v17/values-v17.xml",
+                    "source": "/Users/kovalev/.gradle/caches/transforms-3/cc540a7ab17d4777a0dfb59ffe3e564c/transformed/appcompat-1.2.0/res/values-v17/values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,25,29,33,37,40,43,46,50,53,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

@@ -11,6 +11,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${properties["version.coroutines"]}")
     implementation("com.github.aakira:napier:${properties["version.napier"]}")
     implementation("org.kodein.di:kodein-di-framework-android-x:${properties["version.kodein"]}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${properties["version.lifecycle"]}")
+    implementation("androidx.fragment:fragment-ktx:$${properties["version.fragment"]}")
+
+    implementation("androidx.core:core-ktx:${properties["version.coreKtx"]}")
+    implementation("androidx.navigation:navigation-fragment:${properties["version.navigation"]}")
+    implementation("androidx.navigation:navigation-ui:${properties["version.navigation"]}")
+    implementation("androidx.navigation:navigation-fragment-ktx:${properties["version.navigation"]}")
+    implementation("androidx.navigation:navigation-ui-ktx:${properties["version.navigation"]}")
 }
 
 android {
@@ -26,6 +34,9 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
+    }
+    buildFeatures {
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

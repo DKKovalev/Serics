@@ -4,7 +4,7 @@
             "outputFile": "/Users/kovalev/StudioProjects/Serics/androidApp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "/Users/kovalev/.gradle/caches/transforms-2/files-2.1/a9dc6a8738b4e6bfbbce37f0b28b12d0/appcompat-1.2.0/res/values-watch-v21/values-watch-v21.xml",
+                    "source": "/Users/kovalev/.gradle/caches/transforms-3/cc540a7ab17d4777a0dfb59ffe3e564c/transformed/appcompat-1.2.0/res/values-watch-v21/values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",
