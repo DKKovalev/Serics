@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import org.kodein.di.DI
 import org.kodein.di.DIAware
 import org.kodein.di.android.x.closestDI
@@ -36,9 +38,20 @@ class AuthFragment : Fragment(), DIAware {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        println("!!! viewModel = $viewModel")
+        fragmentBinding?.let { binding ->
+            viewLifecycleOwner.lifecycleScope.launch {
+                binding.goAuth.setOnClickListener {
+                    viewModel.authorize(
+                        binding.login.text.toString(),
+                        binding.password.text.toString()
+                    )
+                }
+            }
+        }
 
-        fragmentBinding?.text?.text = "Hello from auth fragment"
+        viewModel.authLiveData.observe(viewLifecycleOwner) {
+            println("!!! $it")
+        }
     }
 
     override fun onDestroyView() {

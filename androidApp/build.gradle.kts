@@ -11,8 +11,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${properties["version.coroutines"]}")
     implementation("com.github.aakira:napier:${properties["version.napier"]}")
     implementation("org.kodein.di:kodein-di-framework-android-x:${properties["version.kodein"]}")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${properties["version.lifecycle"]}")
     implementation("androidx.fragment:fragment-ktx:$${properties["version.fragment"]}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${properties["version.lifecycle"]}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${properties["version.lifecycle"]}")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:${properties["version.lifecycle"]}")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${properties["version.lifecycle"]}")
+
 
     implementation("androidx.core:core-ktx:${properties["version.coreKtx"]}")
     implementation("androidx.navigation:navigation-fragment:${properties["version.navigation"]}")

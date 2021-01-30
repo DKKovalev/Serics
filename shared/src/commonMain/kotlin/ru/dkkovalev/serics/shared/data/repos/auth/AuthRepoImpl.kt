@@ -10,8 +10,8 @@ class AuthRepoImpl(
     private val settingsHolder: SettingsHolder
 ) : AuthRepo {
 
-    override suspend fun getRequestToken(): String = settingsHolder.getRequestToken()
-        ?: api.getToken().requestToken
+    override suspend fun getRequestToken(): String = /*settingsHolder.getRequestToken()
+        ?:*/ api.getToken().requestToken
             .also(settingsHolder::saveRequestToken)
 
     override suspend fun requestSessionId(): String {

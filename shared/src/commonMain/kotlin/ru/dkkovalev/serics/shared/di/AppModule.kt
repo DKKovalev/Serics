@@ -44,6 +44,11 @@ val appModule = DI.Module("AppModule") {
                 serializer = KotlinxSerializer(instance())
             }
 
+            install(HttpTimeout) {
+                requestTimeoutMillis = 10_000_000
+                connectTimeoutMillis = 10_000_000
+            }
+
             HttpResponseValidator {
                 validateResponse { response ->
                     when (response.status.value) {

@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SessionRequestDto(
-    @SerialName("serial_token") val token: String
+    @SerialName("request_token") val token: String
 )
