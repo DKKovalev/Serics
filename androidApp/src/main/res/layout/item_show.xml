@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/dimen_160"
+    android:layout_height="@dimen/dimen_284">
+
+    <ImageView
+        android:id="@+id/showPoster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/description_show_poster"
+        android:cropToPadding="true" />
+
+    <TextView
+        android:id="@+id/showTitle"
+        style="@style/CardTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dimen_8"
+        android:paddingEnd="@dimen/dimen_8"
+        android:paddingBottom="@dimen/dimen_16"
+        app:layout_constraintBottom_toBottomOf="@id/showPoster"
+        tools:text="Chicken Run" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

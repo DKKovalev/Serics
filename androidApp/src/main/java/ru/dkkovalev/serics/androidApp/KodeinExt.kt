@@ -27,6 +27,5 @@ inline fun <reified VM : ViewModel> DI.Builder.bindViewModel(overrides: Boolean?
 
 fun <T> T.getFactoryInstance(
 ): ViewModelProvider.Factory where T : DIAware, T : Fragment {
-    val viewModelFactory = ViewModelFactory(direct)
-    return viewModelFactory
+    return ViewModelFactory(direct)
 }

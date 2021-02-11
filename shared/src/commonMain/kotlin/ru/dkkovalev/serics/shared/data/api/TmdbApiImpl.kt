@@ -5,17 +5,18 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import ru.dkkovalev.serics.shared.data.entity.request.SessionRequestDto
 import ru.dkkovalev.serics.shared.data.entity.request.ValidateTokenDto
-import ru.dkkovalev.serics.shared.data.entity.response.MovieDto
-import ru.dkkovalev.serics.shared.data.entity.response.RequestTokenDto
-import ru.dkkovalev.serics.shared.data.entity.response.SessionResponseDto
+import ru.dkkovalev.serics.shared.data.entity.response.*
+import ru.dkkovalev.serics.shared.data.utils.SettingsHolder
 
 class TmdbApiImpl(
     private val httpClient: HttpClient,
-    private val language: String
+    settingsHolder: SettingsHolder
 ) : TmdbApi {
 
     private val endpoint = ApiConsts.TMDB_ENDPOINT
     private val key = ApiConsts.TMDB_KEY
+
+    private val language = settingsHolder.getLocale()
 
     override suspend fun getMoviesList(
         query: String,
@@ -58,6 +59,30 @@ class TmdbApiImpl(
             parameter("api_key", key)
             contentType(ContentType.Application.Json)
             body = requestBody
+        }
+    }
+
+    override suspend fun getMovieGenres(): GenresDto = httpClient.get {
+        url {
+            takeFrom("$endpoint/genre/movie/list")
+            parameter("api_key", key)
+            parameter("language", language)
+        }
+    }
+
+    override suspend fun getPopularMovies(): PopularShowDto = httpClient.get {
+        url {
+            takeFrom("$endpoint/movie/popular")
+            parameter("api_key", key)
+            parameter("language", language)
+        }
+    }
+
+    override suspend fun getPopularSeries(): PopularShowDto = httpClient.get {
+        url {
+            takeFrom("$endpoint/tv/popular")
+            parameter("api_key", key)
+            parameter("language", language)
         }
     }
 }

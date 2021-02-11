@@ -20,15 +20,23 @@ class AuthViewModel(
     val authLiveData: LiveData<AuthState> get() = internalLiveData
     private val internalLiveData: MutableLiveData<AuthState> = MutableLiveData()
 
+    val errorLiveData: LiveData<String> get() = internalErrorLiveData
+    private val internalErrorLiveData: MutableLiveData<String> = MutableLiveData()
+
     fun authorize(login: String, password: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                requestTokenUseCase.getToken()
-                validateTokenUseCase.validateToken(login, password)
-                if (createSessionUseCase.createSession().isNotEmpty()) {
-                    internalLiveData.postValue(AuthState.Success)
-                } else {
-                    internalLiveData.postValue(AuthState.Error(""))
+                try {
+                    requestTokenUseCase.getToken()
+                    validateTokenUseCase.validateToken(login, password)
+                    if (createSessionUseCase.createSession().isNotEmpty()) {
+                        internalLiveData.postValue(AuthState.Success)
+                    } else {
+                        internalLiveData.postValue(AuthState.Error(""))
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    internalErrorLiveData.postValue(e.message)
                 }
             }
         }

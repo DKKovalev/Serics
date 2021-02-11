@@ -2,9 +2,7 @@ package ru.dkkovalev.serics.shared.data.api
 
 import ru.dkkovalev.serics.shared.data.entity.request.SessionRequestDto
 import ru.dkkovalev.serics.shared.data.entity.request.ValidateTokenDto
-import ru.dkkovalev.serics.shared.data.entity.response.MovieDto
-import ru.dkkovalev.serics.shared.data.entity.response.RequestTokenDto
-import ru.dkkovalev.serics.shared.data.entity.response.SessionResponseDto
+import ru.dkkovalev.serics.shared.data.entity.response.*
 
 interface TmdbApi {
 
@@ -19,4 +17,10 @@ interface TmdbApi {
     suspend fun requestNewSession(requestBody: SessionRequestDto): SessionResponseDto
 
     suspend fun validateToken(requestBody: ValidateTokenDto): RequestTokenDto
+
+    suspend fun getMovieGenres(): GenresDto
+
+    suspend fun getPopularMovies(): PopularShowDto
+
+    suspend fun getPopularSeries(): PopularShowDto
 }

@@ -6,4 +6,7 @@ interface SettingsHolder {
 
     fun saveSessionId(sessionId: String)
     fun getSessionId(): String?
+
+    fun setLocale(locale: String)
+    fun getLocale(): String?
 }

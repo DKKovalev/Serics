@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_list">list</string>
+    <string name="popular_movies">popular_movies</string>
+    <string name="popular_shows">popular_shows</string>
+    <string name="description_show_poster">show poster</string>
+</resources>

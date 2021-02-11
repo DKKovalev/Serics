@@ -1,11 +1,10 @@
 @file:Suppress("EXPERIMENTAL_API_USAGE")
 
-package ru.dkkovalev.serics.shared.di
+package ru.dkkovalev.serics.shared.di.kodein
 
 import com.github.aakira.napier.Napier
 import com.russhwolf.settings.Settings
 import io.ktor.client.*
-import io.ktor.client.engine.cio.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
@@ -30,7 +29,7 @@ val appModule = DI.Module("AppModule") {
     }
 
     bind<HttpClient>() with singleton {
-        HttpClient(CIO) {
+        HttpClient() {
             install(Logging) {
                 level = LogLevel.ALL
                 logger = object : Logger {
@@ -63,5 +62,5 @@ val appModule = DI.Module("AppModule") {
 
     bind<SettingsHolder>() with singleton { SettingsHolderImpl(instance()) }
 
-    bind<TmdbApi>() with provider { TmdbApiImpl(instance(), "ru_RU") }
+    bind<TmdbApi>() with provider { TmdbApiImpl(instance(), instance()) }
 }

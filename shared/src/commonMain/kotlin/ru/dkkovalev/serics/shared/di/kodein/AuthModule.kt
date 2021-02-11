@@ -1,4 +1,4 @@
-package ru.dkkovalev.serics.shared.di
+package ru.dkkovalev.serics.shared.di.kodein
 
 import org.kodein.di.DI
 import org.kodein.di.bind

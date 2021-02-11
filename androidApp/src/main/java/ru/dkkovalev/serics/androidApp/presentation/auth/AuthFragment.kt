@@ -15,10 +15,6 @@ import ru.dkkovalev.serics.androidApp.fragmentViewModel
 
 class AuthFragment : Fragment(), DIAware {
 
-    companion object {
-        fun newInstance(): AuthFragment = AuthFragment()
-    }
-
     override val di: DI by closestDI()
 
     private val viewModel: AuthViewModel by fragmentViewModel()
@@ -51,6 +47,10 @@ class AuthFragment : Fragment(), DIAware {
 
         viewModel.authLiveData.observe(viewLifecycleOwner) {
             println("!!! $it")
+        }
+
+        viewModel.errorLiveData.observe(viewLifecycleOwner) {
+            println("!!! error $it")
         }
     }
 
