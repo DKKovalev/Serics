@@ -17,6 +17,12 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${properties["version.lifecycle"]}")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:${properties["version.lifecycle"]}")
 
+    implementation("com.github.bumptech.glide:glide:${properties["version.glide"]}")
+    annotationProcessor("com.github.bumptech.glide:compiler:${properties["version.glide"]}")
+    implementation("com.github.bumptech.glide:recyclerview-integration:${properties["version.glide"]}") {
+        isTransitive = false
+    }
+
 
     implementation("androidx.core:core-ktx:${properties["version.coreKtx"]}")
     implementation("androidx.navigation:navigation-fragment:${properties["version.navigation"]}")
