@@ -16,13 +16,10 @@ abstract class BaseUi<F : Fragment>(private val fragment: F) : LifecycleObserver
         fragment.viewLifecycleOwner.lifecycle.addObserver(object : LifecycleObserver {
             @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
             fun onCreate(owner: LifecycleOwner) {
-                if (owner.lifecycle.currentState == Lifecycle.State.CREATED) {
-                    println("!!! created")
-                }
-                onViewCreated()
+                onViewCreated(fragment)
             }
         })
     }
 
-    abstract fun onViewCreated()
+    abstract fun onViewCreated(fragment: F)
 }

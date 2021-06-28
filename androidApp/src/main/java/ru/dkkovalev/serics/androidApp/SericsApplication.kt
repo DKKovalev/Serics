@@ -8,17 +8,25 @@ import org.kodein.di.DIAware
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.instance
 import ru.dkkovalev.serics.shared.data.utils.SettingsHolder
-import ru.dkkovalev.serics.shared.di.kodein.appModule
-import ru.dkkovalev.serics.shared.di.kodein.authModule
-import ru.dkkovalev.serics.shared.di.kodein.moviesModule
-import ru.dkkovalev.serics.shared.di.kodein.popularModule
+import ru.dkkovalev.serics.shared.di.appModule
+import ru.dkkovalev.serics.shared.di.authModule
+import ru.dkkovalev.serics.shared.di.moviesModule
+import ru.dkkovalev.serics.shared.di.popularModule
 import java.util.*
 
 class SericsApplication : Application(), DIAware {
 
     override val di: DI by DI.lazy {
         import(androidXModule(this@SericsApplication))
-        importAll(appModule, uiModule, authModule, moviesModule, popularModule, viewModelModule)
+        importAll(
+            appModule,
+            androidAppModule,
+            popularMoviesUiModule,
+            authModule,
+            moviesModule,
+            popularModule,
+            viewModelModule
+        )
     }
 
     private val settingsHolder by di.instance<SettingsHolder>()

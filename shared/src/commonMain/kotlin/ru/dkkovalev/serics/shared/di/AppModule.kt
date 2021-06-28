@@ -1,6 +1,6 @@
 @file:Suppress("EXPERIMENTAL_API_USAGE")
 
-package ru.dkkovalev.serics.shared.di.kodein
+package ru.dkkovalev.serics.shared.di
 
 import com.github.aakira.napier.Napier
 import com.russhwolf.settings.Settings

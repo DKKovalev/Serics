@@ -13,7 +13,6 @@ dependencies {
     implementation("org.kodein.di:kodein-di-framework-android-x:${properties["version.kodein"]}")
     implementation("androidx.fragment:fragment-ktx:$${properties["version.fragment"]}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${properties["version.lifecycle"]}")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${properties["version.lifecycle"]}")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${properties["version.lifecycle"]}")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:${properties["version.lifecycle"]}")
 
@@ -22,7 +21,6 @@ dependencies {
     implementation("com.github.bumptech.glide:recyclerview-integration:${properties["version.glide"]}") {
         isTransitive = false
     }
-
 
     implementation("androidx.core:core-ktx:${properties["version.coreKtx"]}")
     implementation("androidx.navigation:navigation-fragment:${properties["version.navigation"]}")

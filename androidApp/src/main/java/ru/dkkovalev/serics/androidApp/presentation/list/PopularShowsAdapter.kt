@@ -15,7 +15,7 @@ import ru.dkkovalev.serics.androidApp.R
 import ru.dkkovalev.serics.androidApp.databinding.ItemShowBinding
 import ru.dkkovalev.serics.shared.data.entity.model.Show
 
-class ShowsAdapter(private val glideRequestManager: RequestManager) :
+class PopularShowsAdapter(private val glideRequestManager: RequestManager) :
     ListAdapter<Show, MoviesViewHolder>(MoviesUtilCallback()),
     ListPreloader.PreloadModelProvider<Show> {
 
